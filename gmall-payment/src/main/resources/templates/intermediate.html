@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js\jquery-3.1.1.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div>
+    <form id="callback" method="post" action="/alipay/callback/return">
+        <input th:value="${sign}" type="text" name="sign" id="sign">
+        <input th:value="${trade_no}" type="text" name="trade_no">
+        <input th:value="${out_trade_no}" type="text" name="out_trade_no">
+        <input th:value="${call_back_content}" type="text" name="call_back_content">
+    </form>
+    <button id="callbackreturn">回调</button>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#callbackreturn").click(function () {
+            var sign = $("#sign").val();
+            console.log(sign);
+            $("#callback").submit();
+        });
+    })
+</script>
+</body>
+</html>
